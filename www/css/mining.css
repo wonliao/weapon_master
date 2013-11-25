@@ -5,3 +5,22 @@ body {
     margin:0px;
     padding:0px;
 }
+
+.mine_li {
+	/*background:#00C;*/
+	width:20%; 
+	height:20%; 
+	float:left;	
+}
+
+.mine_img {
+	width:50%;
+}
+
+.hud_li {
+	/*background:#00C;*/
+	color:#FFF;
+	width:13.5%; 
+	height:100%; 
+	float:left;	
+}

@@ -2,23 +2,73 @@
 
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery.fittext.js"></script>
+<script type="text/javascript" src="./js/player.js"></script>
 <script type="text/javascript" src="./js/mining.js"></script>
 <script type="text/javascript">
     $(document).ready(function(e) {
 
         //$("#level_num").fitText(1.5);
-		
+
+		player.initialize();
 
         mining.initialize();
     });
 </script>
 
-<div style="width:100%; height:100%; position:absolute; overflow:hidden;">
+<div style="width: 100%; height: 100%; position: absolute; overflow: hidden; top: 1px;">
 
 	<!-- 背景圖 -->
 	<img src="./img/mining/bg.png" style="width:100%; height:100%; position:absolute;" />
    	
+    <!-- 抬頭訊息 -->
+    <ul id="HUD" style="position:absolute; top:13.8%; left:3%; width:100%; height:5%; list-style:none; margin:0; padding:0; text-align:center;">
+    	<li id="hud_1" class="hud_li">0</li>
+        <li id="hud_2" class="hud_li">0</li>
+        <li id="hud_3" class="hud_li">0</li>
+        <li id="hud_4" class="hud_li">0</li>
+        <li id="hud_5" class="hud_li">0</li>
+    
+    </ul>
+    
+    
     <!-- 礦區 -->
-   	<div style="position:absolute; top:60%; left:0%; width:100%; height:40%; background:#FF0; opacity:0.3;"></div>
+   	<ul id="mineArea" style="position:absolute; top:56%; left:5%; width:100%; height:40%; list-style:none; margin:0; padding:0;">
+    	
+        <!-- 橫向第一排 -->
+        <li id="mine_1" class="mine_li"></li>
+        <li id="mine_2" class="mine_li"></li>
+        <li id="mine_3" class="mine_li"></li>
+        <li id="mine_4" class="mine_li"></li>
+        <li id="mine_5" class="mine_li"></li>
+
+        <!-- 橫向第二排 -->
+        <li id="mine_6" class="mine_li"></li>
+        <li id="mine_7" class="mine_li"></li>
+        <li id="mine_8" class="mine_li"></li>
+        <li id="mine_9" class="mine_li"></li>
+        <li id="mine_10" class="mine_li"></li>
+
+		<!-- 橫向第三排 -->
+        <li id="mine_11" class="mine_li"></li>
+        <li id="mine_12" class="mine_li"></li>
+        <li id="mine_13" class="mine_li"></li>
+        <li id="mine_14" class="mine_li"></li>
+        <li id="mine_15" class="mine_li"></li>
+
+		<!-- 橫向第四排 -->
+      	<li id="mine_16" class="mine_li"></li>
+        <li id="mine_17" class="mine_li"></li>
+        <li id="mine_18" class="mine_li"></li>
+        <li id="mine_19" class="mine_li"></li>
+        <li id="mine_20" class="mine_li"></li>
+
+		<!-- 橫向第五排 -->
+        <li id="mine_21" class="mine_li"></li>
+        <li id="mine_22" class="mine_li"></li>
+        <li id="mine_23" class="mine_li"></li>
+        <li id="mine_24" class="mine_li"></li>
+        <li id="mine_25" class="mine_li"></li> 
+    	
+    </ul>
 
 </div>

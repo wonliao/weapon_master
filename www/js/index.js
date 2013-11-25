@@ -41,8 +41,8 @@ var app = {
 
 		$('#mining_btn').click(		function() {	app.gotoPage("mining");		});	// 採礦
 		$('#forging_btn').click(	function() {	app.gotoPage("forging");	});	// 鍛造
-		$('#battle_btn').click(		function() {	app.gotoPage("battle");		});	// 戰鬥
 		$('#equipment_btn').click(	function() {	app.gotoPage("equipment");	});	// 裝備
+		$('#battle_btn').click(		function() {	app.gotoPage("battle");		});	// 戰鬥
 		$('#shop_btn').click(		function() {	app.gotoPage("shop");		});	// 商店
 	},
 	
@@ -52,8 +52,8 @@ var app = {
 		// 清空全部頁面
 		$("#mining_div").empty();
 		$("#forging_div").empty();
-		$("#battle_div").empty();
 		$("#equipment_div").empty();
+		$("#battle_div").empty();
 		$("#shop_div").empty();
 
 		var fileName = pageName + ".html";
