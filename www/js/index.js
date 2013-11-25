@@ -56,7 +56,7 @@ var app = {
 		$("#equipment_div").empty();
 		$("#shop_div").empty();
 
-		var fileName = "./pages/" + pageName + ".html";
+		var fileName = pageName + ".html";
 		var output = "#" + pageName + "_div";
 
 		// post 頁面

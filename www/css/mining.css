@@ -16,14 +16,3 @@ body {
     width:100%;
 	
 }
-
-.pageBtn {
-	text-align:center;
-	position:relative;
-	width:17.8%; 
-	height:90%; 
-	float:left; 
-	background:#0FF;
-	border:#000 solid 1px;
-	margin:1%;
-}
