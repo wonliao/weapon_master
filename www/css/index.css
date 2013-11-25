@@ -13,17 +13,16 @@ body {
     margin:0px;
     padding:0px;
     text-transform:uppercase;
-    width:100%;
-	
+    width: 320px;/*100%;*/
 }
 
 .pageBtn {
 	text-align:center;
 	position:relative;
 	width:17.8%; 
-	height:90%; 
+	height:85%; 
 	float:left; 
 	background:#0FF;
 	border:#000 solid 1px;
-	margin:1%;
+	margin:2px;
 }
