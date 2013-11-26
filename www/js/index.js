@@ -33,7 +33,7 @@ var app = {
 		this.setButton();
 		
 		// 預設開啟 採礦 頁
-		this.gotoPage("mining");
+		this.gotoPage("forging");
     },
 	
 	// 設定按鈕

@@ -29,7 +29,7 @@ var mining = {
 		this.setButton();
 
 		// 更新抬頭訊息
-		this.ShowHUD();
+		this.showHUD();
 
 		// 產礦迴圈
 		this.producingMinesLoop(0);
@@ -76,7 +76,7 @@ var mining = {
 					player.addResource(mineType);
 	
 					// 更新抬頭訊息
-					mining.ShowHUD();
+					mining.showHUD();
 	
 					// 清除礦產
 					object.html("");
@@ -114,7 +114,7 @@ var mining = {
 	},
 	
 	// 更新抬頭訊息
-	ShowHUD: function() {
+	showHUD: function() {
 
 		$('#hud_1').text(player.stone1);
 		$('#hud_2').text(player.stone2);
