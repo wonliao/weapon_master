@@ -1,5 +1,7 @@
 var mining = {
 
+	timer: 0,
+
 	// 是否為 Mobile 裝置
 	isMobile: false,
 
@@ -32,6 +34,13 @@ var mining = {
 		// 產礦迴圈
 		this.producingMinesLoop(0);
     },
+	
+	// 停止
+	setStop: function() {
+		
+		// 停止迴圈
+		clearTimeout(mining.timer);
+	},
 	
 	// 設定 mine 的 jquery selector 列表
 	setMineArray: function() {
@@ -89,7 +98,7 @@ var mining = {
 		// 如果 礦點是空的 就產生 礦產
 		if(mine.html() == "") {
 
-			var stoneIndex = usefloor(1, 5);
+			var stoneIndex = usefloor(1, 6);
 			mine.attr("title", stoneIndex);	// 將 礦的種類 存放在 title 標籤裡
 
  			mine.html("<img src='./img/mining/stone"+stoneIndex+".png' class='mine_img' alt=''/>");
@@ -98,7 +107,7 @@ var mining = {
 		index ++;
 		if(index >= mining.mineMax) index = 0;
 		
-		setTimeout(function() {
+		mining.timer = setTimeout(function() {
 
 			mining.producingMinesLoop(index);
 		}, mining.producingTime);
@@ -112,6 +121,7 @@ var mining = {
 		$('#hud_3').text(player.stone3);
 		$('#hud_4').text(player.stone4);
 		$('#hud_5').text(player.stone5);
+		$('#hud_6').text(player.stone6);
 	}
 };
 

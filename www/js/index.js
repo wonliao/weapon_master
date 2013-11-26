@@ -49,6 +49,9 @@ var app = {
 	// 轉跳頁面
 	gotoPage: function(pageName) {
 
+		// 清除迴圈
+		if(typeof(mining) != 'undefined')	mining.setStop();
+
 		// 清空全部頁面
 		$("#mining_div").empty();
 		$("#forging_div").empty();
