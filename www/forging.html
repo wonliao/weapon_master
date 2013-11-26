@@ -1,11 +1,73 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>forging</title>
-</head>
+<link rel="stylesheet" type="text/css" href="./css/forging.css" />
 
-<body>
-	<h1>forging</h1>
-</body>
-</html>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/jquery.fittext.js"></script>
+<script type="text/javascript" src="./js/player.js"></script>
+<script type="text/javascript" src="./js/forging.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+
+        //$("#level_num").fitText(1.5);
+
+		player.initialize();
+
+        //forging.initialize();
+    });
+</script>
+
+<div style="width: 100%; height: 100%; position: absolute; overflow: hidden; top: 1px; background:#000;">
+
+	<!-- 背景圖 -->
+	<img src="./img/forging/bg.gif" style="width:100%; height:100%; position:absolute;" />
+   	
+    <img src="./img/forging/hud.png" style="width:87.18%; position:absolute;" />
+    
+   
+    <!-- 抬頭訊息 -->
+    <ul id="HUD" style="position:absolute; top:11%; left:3%; width:100%; height:5%; list-style:none; margin:0; padding:0; text-align:center;">
+    	<li id="hud_1" class="hud_li">0</li>
+        <li id="hud_2" class="hud_li">0</li>
+        <li id="hud_3" class="hud_li">0</li>
+        <li id="hud_4" class="hud_li">0</li>
+        <li id="hud_5" class="hud_li">0</li>
+    	<li id="hud_6" class="hud_li">0</li>
+    </ul>
+
+
+	<!-- 礦區 -->
+   	<ul id="mineArea" style="position:absolute; top:68%; left:0%; width:100%; height:40%; list-style:none; margin:0; padding:0;">
+    	
+        <!-- 武器1 -->
+        <li id="weapon_1" class="weapon_li">
+        	<img src="./img/forging/weapon1.png" class="weapon"/>
+            <div id="weapon1_num" class="round">0</div>
+        	<div>礦一: 2</div>
+			<div>礦二: 2</div>
+        </li>
+        
+        <!-- 武器2 -->
+        <li id="weapon_2" class="weapon_li">
+        	<img src="./img/forging/weapon2.png" class="weapon"/>
+            <div id="weapon2_num" class="round">0</div>
+            <div>礦一: 1</div>
+			<div>礦二: 3</div>
+        </li>
+        
+        <!-- 武器3 -->
+        <li id="weapon_3" class="weapon_li">
+        	<img src="./img/forging/weapon3.png" class="weapon"/>
+            <div id="weapon3_num" class="round">0</div>
+            <div>礦三: 2</div>
+			<div>礦四: 2</div>
+        </li>
+        
+        <!-- 武器4 -->
+        <li id="weapon_4" class="weapon_li">
+        	<img src="./img/forging/weapon4.png" class="weapon"/>
+            <div id="weapon4_num" class="round">0</div>
+        	<div>礦四: 1</div>
+			<div>礦五: 3</div>
+        </li>
+    </ul>
+
+</div>

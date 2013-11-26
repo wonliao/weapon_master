@@ -1,0 +1,38 @@
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    margin:0px;
+    padding:0px;
+}
+
+.hud_li {
+	/*background:#00C;*/
+	color:#FFF;
+	width:13.5%; 
+	height:100%; 
+	float:left;	
+}
+
+.weapon_li {
+	/*background:#00C;*/
+	width: 20%;
+	float:left;
+	margin-left:4%;
+	color:#FFF;
+	text-align:center;
+	font-weight:bold;
+}
+
+.weapon {
+	width:100%;	
+}
+
+.round {
+	position:absolute; 
+	top:0%;
+	background-color:#F00;
+	border-radius:10px;
+	width:20px;
+	height:20px;	
+}
