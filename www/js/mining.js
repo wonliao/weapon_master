@@ -1,5 +1,8 @@
 var mining = {
 
+	// 是否為 Mobile 裝置
+	isMobile: false,
+
 	// 生產一個礦所需的時間(亳秒)
 	producingTime: 100, 
 
@@ -14,6 +17,8 @@ var mining = {
 
 	// 初始化
     initialize: function() {
+
+		this.isMobile = (/android|webos|iphone|ipad|ipod|blackberry/i.test(navigator.userAgent.toLowerCase()));
 
 		// 設定 mine 的 jquery selector 列表
 		this.setMineArray();
@@ -51,20 +56,24 @@ var mining = {
 			var mine = this.mineArray[i];
 
 			// 採礦
-			mine.click(function() {
+			Click(mine, function(object) {
+				
+				if(object.html() != "") {
 
-				//var mineId = $(this).attr('id');
-				var mineType = $(this).attr('title');	// 礦的種類
+					var mineId = object.attr('id');
+					var mineType = object.attr('title');	// 礦的種類
 
-				// 增加資源
-				player.addResource(mineType);
-
-				// 更新抬頭訊息
-				mining.ShowHUD();
-
-				// 清除礦產
-				$(this).html("");
+					// 增加資源
+					player.addResource(mineType);
+	
+					// 更新抬頭訊息
+					mining.ShowHUD();
+	
+					// 清除礦產
+					object.html("");
+				}
 			});
+
 		}
 	},
 
@@ -83,7 +92,7 @@ var mining = {
 			var stoneIndex = usefloor(1, 5);
 			mine.attr("title", stoneIndex);	// 將 礦的種類 存放在 title 標籤裡
 
- 			mine.html("<img src='./img/mining/stone"+stoneIndex+".png' class='mine_img' />");
+ 			mine.html("<img src='./img/mining/stone"+stoneIndex+".png' class='mine_img' alt=''/>");
 		}
 
 		index ++;
@@ -110,5 +119,24 @@ var mining = {
 function usefloor(min,max) {
 
 	return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+function Click(object, callback) {
+
+	// Mobile 裝置
+	if(mining.isMobile == true) {
+		
+		object.bind('touchstart', function() {
+			
+			callback(object);
+		});
+	// 網頁版	
+	} else {
+
+		object.click(function() {
+
+			callback(object);
+		});
+	}
 }
 
