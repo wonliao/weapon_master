@@ -13,3 +13,40 @@ body {
 	height:100%; 
 	float:left;	
 }
+
+
+/*
+.ui-widget-content {
+	background:#FF0;
+}
+*/
+
+.weapon_li {
+	/*background:#00C;*/
+	width: 20%;
+	float:left;
+	margin-left:4%;
+	color:#FFF;
+	text-align:center;
+	font-weight:bold;
+	position:relative;
+}
+
+.weapon {
+	width:100%;	
+}
+
+.weapon_clone {
+	width:20%;	
+}
+
+
+.round {
+	position:absolute; 
+	top:0%;
+	background-color:#F00;
+	border-radius:10px;
+	width:20px;
+	height:20px;
+	z-index: 1;
+}
