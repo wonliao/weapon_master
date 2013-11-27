@@ -1,11 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>battle</title>
-</head>
+<link rel="stylesheet" type="text/css" href="./css/battle.css" />
 
-<body>
-	<h1>battle</h1>
-</body>
-</html>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/jquery.fittext.js"></script>
+<script type="text/javascript" src="./js/player.js"></script>
+
+<script type="text/javascript" src="./js/jquery.gamequery.js"></script>
+<script type="text/javascript" src="./js/superjavascriptfighter2.js"></script>
+
+<script type="text/javascript" src="./js/battle.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+
+        //$("#level_num").fitText(1.5);
+
+		player.initialize();
+
+        //battle.initialize();
+    });
+</script>
+
+<div style="width:100%; height:100%; position:absolute; overflow:hidden; top:0; background:#000;">
+
+    <div id="playground" style="position:absolute; top:10%; width:100%; height:200px;"></div>
+    
+    
+</div>

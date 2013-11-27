@@ -33,7 +33,7 @@ var app = {
 		this.setButton();
 		
 		// 預設開啟 採礦 頁
-		this.gotoPage("forging");
+		this.gotoPage("battle");
     },
 	
 	// 設定按鈕
@@ -48,6 +48,16 @@ var app = {
 	
 	// 轉跳頁面
 	gotoPage: function(pageName) {
+
+		// 關閉舊按鈕
+		$('#mining_btn').css(	"background", "#0FF");
+		$('#forging_btn').css(	"background", "#0FF");
+		$('#equipment_btn').css("background", "#0FF");
+		$('#battle_btn').css(	"background", "#0FF");
+		$('#shop_btn').css(		"background", "#0FF");
+
+		// 點亮新按鈕
+		$('#'+pageName+"_btn").css("background", "#FF0");
 
 		// 清除迴圈
 		if(typeof(mining) != 'undefined')	mining.setStop();
