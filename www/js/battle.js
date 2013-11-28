@@ -28,6 +28,22 @@ var battle = {
 			 
 			 console.log("droped");
 			
+			
+			var cvs = $("#cvs");
+        	var cvsF = cvs.data("fighter");
+			
+			cvsF.currentState = KICK;
+			changeAnimation(cvs, cvsF.animations, 4, cvsF.currentState);
+			
+			
+			//animate(4);
+			 //$('#cvs').playground().changeAnimation(cvs, cvsF.animations, 4, cvsF.currentState);
+			 
+			//$('#playground').setAnimation();
+			
+			//.changeAnimation(cvs, cvsF.animations, BEATEN, cvsF.currentState);
+		//cvsF.currentState = BEATEN;
+			
 		  }
 		});
 	},

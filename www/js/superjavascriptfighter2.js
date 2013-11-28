@@ -1,7 +1,8 @@
 var PLAYGROUND_WIDTH = 800/2.5;
 var PLAYGROUND_HEIGHT = 200;
 
-$(function(){
+
+//$(function(){
     // This is the AI that determines the next move
     // level=0: totaly random
     // level=1: totaly "rational"
@@ -64,12 +65,32 @@ $(function(){
     }
 
     function animate(sprite){
+
         sprite = $(sprite);
         fighter = sprite.data("fighter");
         adversary = $(fighter.adversary);
         adversaryFighter = adversary.data("fighter");
 
         var nextState = nextMove(0.8, sprite, adversary);
+
+        changeAnimation(sprite, fighter.animations, nextState, fighter.currentState);
+
+        if(nextState == PUNCH || nextState == KICK){
+            sprite.z(20);
+        } else if(fighter.currentState == PUNCH || fighter.currentState == KICK){
+            sprite.z(0);
+        }
+
+        fighter.currentState = nextState;
+    }
+	
+	function animate2(sprite){
+        sprite = $(sprite);
+        fighter = sprite.data("fighter");
+        adversary = $(fighter.adversary);
+        adversaryFighter = adversary.data("fighter");
+
+        var nextState = IDLE; //nextMove(0.8, sprite, adversary);
 
         changeAnimation(sprite, fighter.animations, nextState, fighter.currentState);
 
@@ -182,7 +203,7 @@ $(function(){
 									delta: 156,
 									rate:90,
 									type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_CALLBACK}),
-				deltaX: -20, deltaY: 0, width: 156, height: 106},
+				deltaX: 0, deltaY: 0, width: 156, height: 106},
             {animation: new $.gQ.Animation({	imageURL: "./img/battle/cvs/cvs_block_69x99x2.png",
 									numberOfFrame: 2,
 									delta: 69,
@@ -201,7 +222,7 @@ $(function(){
 								 width: 58,
 								 animation: cvs.animations[0].animation,
                                  geometry: $.gQ.GEOMETRY_RECTANGLE,
-                                 callback: animate});
+                                 callback: animate2});
     $("#cvs").data("fighter", cvs);
 
 
@@ -264,7 +285,7 @@ $(function(){
 	//register the main callback
 	$.playground().registerCallback(function(){
 		
-		scrollStage(50);
+		scrollStage(100);
 		
 		var cvs = $("#cvs");
         var cvsF = cvs.data("fighter");
@@ -274,9 +295,18 @@ $(function(){
         var aboboF = abobo.data("fighter");
         var aboboLeft = abobo.position().left;
 
+		// 主角攻擊
+		if(cvsF.currentState == KICK || cvsF.currentState == PUNCH) {
+
+			// 怪物受傷
+			changeAnimation(abobo, aboboF.animations, BEATEN, aboboF.currentState);
+			aboboF.currentState = BEATEN;
+		}
+/*
 		//hit?
 		if(cvsLeft+cvsF.animations[cvsF.currentState].width - 2 > aboboLeft){
 			if((cvsF.currentState == KICK || cvsF.currentState == PUNCH) && aboboF.currentState != BEATEN){
+			
 				if (aboboF.currentState == KICK || aboboF.currentState == PUNCH) {
 					changeAnimation(abobo, aboboF.animations, BEATEN, aboboF.currentState);
 					aboboF.currentState = BEATEN;
@@ -291,6 +321,7 @@ $(function(){
 				cvsF.currentState = BEATEN;
 			}
 		}
+*/
 /*
 		//主角前進
         if(cvsF.currentState == WALK_FORWARD){
@@ -338,5 +369,8 @@ $(function(){
 	$.playground().startGame(function(){
 		$("#welcomMessage").fadeOut(2000, function(){$(this).remove()});
 	});
-});
+	
+	
+	
+//});
 
