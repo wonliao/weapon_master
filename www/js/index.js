@@ -33,7 +33,7 @@ var app = {
 		this.setButton();
 		
 		// 預設開啟 採礦 頁
-		this.gotoPage("battle");
+		this.gotoPage("map");
     },
 	
 	// 設定按鈕
@@ -41,7 +41,7 @@ var app = {
 
 		$('#mining_btn').click(		function() {	app.gotoPage("mining");		});	// 採礦
 		$('#forging_btn').click(	function() {	app.gotoPage("forging");	});	// 鍛造
-		$('#equipment_btn').click(	function() {	app.gotoPage("equipment");	});	// 裝備
+		$('#map_btn').click(		function() {	app.gotoPage("map");		});	// 地圖
 		$('#battle_btn').click(		function() {	app.gotoPage("battle");		});	// 戰鬥
 		$('#shop_btn').click(		function() {	app.gotoPage("shop");		});	// 商店
 	},
@@ -52,7 +52,7 @@ var app = {
 		// 關閉舊按鈕
 		$('#mining_btn').css(	"background", "#0FF");
 		$('#forging_btn').css(	"background", "#0FF");
-		$('#equipment_btn').css("background", "#0FF");
+		$('#map_btn').css(		"background", "#0FF");
 		$('#battle_btn').css(	"background", "#0FF");
 		$('#shop_btn').css(		"background", "#0FF");
 
@@ -65,7 +65,7 @@ var app = {
 		// 清空全部頁面
 		$("#mining_div").empty();
 		$("#forging_div").empty();
-		$("#equipment_div").empty();
+		$("#map_div").empty();
 		$("#battle_div").empty();
 		$("#shop_div").empty();
 

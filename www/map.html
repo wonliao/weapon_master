@@ -1,0 +1,45 @@
+<link rel="stylesheet" type="text/css" href="./css/map.css" />
+
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="./js/jquery.transit.min.js"></script>
+
+<!--
+<script type="text/javascript" src="./js/draggable_background.js"></script>
+-->
+<script type="text/javascript" src="./js/jquery.kinetic.min.js"></script>
+
+<script type="text/javascript" src="./js/player.js"></script>
+
+<script type="text/javascript" src="./js/map.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+
+		//player.initialize();
+
+       	//map.initialize();
+	
+      
+	  	$('#wrapper').kinetic();
+
+		$('#donkey').transition({rotateY: '180deg'}, 0).transition({ x: '-220px' }, 3000);
+    });
+</script>
+
+<div style="width:100%; height:100%; position:absolute; overflow:hidden; top:0; background:#000;">
+
+	<div id="wrapper" style="position:relative;">
+    	<div id="inner" >
+        	 <!-- 地圖 -->  
+             <img src="./img/map/map.png" alt="wembley stadium" />
+             
+             <!-- 英雄 -->
+             <img id="hero" src="./img/map/hero.gif" style="width:150px; position:absolute; top:290px;; left:360px;" />
+             
+             <!-- 驢子 -->
+             <img id="donkey" src="./img/map/donkey_walk.gif" style="width:100px; position:absolute; top:320px;; left:100px;" />
+    	</div>
+	</div>
+
+</div>
