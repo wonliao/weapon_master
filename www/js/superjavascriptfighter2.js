@@ -3,6 +3,7 @@ var PLAYGROUND_HEIGHT = 200;
 
 
 //$(function(){
+	
     // This is the AI that determines the next move
     // level=0: totaly random
     // level=1: totaly "rational"
@@ -39,27 +40,27 @@ var PLAYGROUND_HEIGHT = 200;
             case WALK_BACKWARD:
             case BLOCK:
                 if(distance(a,b) < NEAR){
-                    return or([KICK, PUNCH, /*WALK_BACKWARD*/]);
+                    return or([KICK, PUNCH/*, WALK_BACKWARD*/]);
                 } else {
-                    return or([WALK_FORWARD, IDLE]);
+                    return or([WALK_FORWARD/*, IDLE*/]);
                 }
                 break;
             // if the adversary moves toward us we get away or attack ihm
             case WALK_FORWARD:
                 if(distance(a,b) < NEAR){
-                    return or([KICK, PUNCH, /*WALK_BACKWARD*/]);
+                    return or([KICK, PUNCH/*, WALK_BACKWARD*/]);
                 } else {
-                    return or([WALK_FORWARD, IDLE]);
+                    return or([WALK_FORWARD/*, IDLE*/]);
                 }
                 break;
             // if we are under attack we either block go back or try to fight back
             case PUNCH:
             case KICK:
-                return or([BLOCK, PUNCH, KICK, IDLE]);
+                return or([/*BLOCK,*/ PUNCH, KICK, IDLE]);
                 break;
             // if beaten we block or go back
             case BEATEN:
-                return or([BLOCK, /*WALK_BACKWARD*/, IDLE]);
+                return or([/*BLOCK, WALK_BACKWARD*/, IDLE]);
                 break;
         }
     }
@@ -83,7 +84,7 @@ var PLAYGROUND_HEIGHT = 200;
 
         fighter.currentState = nextState;
     }
-	
+
 	function animate2(sprite){
         sprite = $(sprite);
         fighter = sprite.data("fighter");
@@ -111,7 +112,7 @@ var PLAYGROUND_HEIGHT = 200;
     		offset = -50;
     	}
 */
-		offset -=240; // 800/2 - 320/2
+		offset -= 240; // 800/2 - 320/2
 		
     	$("#foreground").x(-800 + offset);
 
@@ -121,10 +122,7 @@ var PLAYGROUND_HEIGHT = 200;
         $("#background1").x(50 + offset/2);
         $("#background2").x(30 + offset/4);
         $("#background3").x(90 + offset/5);
-
    	}
-	
-	
 
     /*replace with new*/
     var changeAnimation = function(sprite, animationArry, newAnimation , oldAnimation){
@@ -166,8 +164,6 @@ var PLAYGROUND_HEIGHT = 200;
 								 height: 44, width: 2000,
 								 animation: foreground});
 	$("#scenegraph").css("background-color","#121423");
-
-    //Fighters
 	
 	// 主角
     var cvs = {
@@ -273,7 +269,7 @@ var PLAYGROUND_HEIGHT = 200;
 				  deltaX: 0, deltaY: 50, width: 108, height: 120}]
     }
 	$("#fighters").addSprite("abobo",
-								{posx: 500,
+								{posx: 400,
 								 posy: 60,
 								 height: 121,
 								 width: 100,
@@ -302,7 +298,7 @@ var PLAYGROUND_HEIGHT = 200;
 			changeAnimation(abobo, aboboF.animations, BEATEN, aboboF.currentState);
 			aboboF.currentState = BEATEN;
 		}
-/*
+
 		//hit?
 		if(cvsLeft+cvsF.animations[cvsF.currentState].width - 2 > aboboLeft){
 			if((cvsF.currentState == KICK || cvsF.currentState == PUNCH) && aboboF.currentState != BEATEN){
@@ -321,7 +317,7 @@ var PLAYGROUND_HEIGHT = 200;
 				cvsF.currentState = BEATEN;
 			}
 		}
-*/
+
 /*
 		//主角前進
         if(cvsF.currentState == WALK_FORWARD){
@@ -338,7 +334,7 @@ var PLAYGROUND_HEIGHT = 200;
 		// 怪物前進
         if(aboboF.currentState == WALK_FORWARD){
             if((cvsLeft+cvsF.animations[cvsF.currentState].width+2) < aboboLeft){
-            	abobo.x(aboboLeft - 2);
+            	abobo.x(aboboLeft - 8);
             }
         } 
 		/*
@@ -357,6 +353,21 @@ var PLAYGROUND_HEIGHT = 200;
 		return false;
 	}, 30);
 
+	function respawnEnemy() {
+		
+		var abobo = $("#abobo");
+       	abobo.css('opacity', 0);
+		
+		setTimeout(function() {
+			
+			var abobo = $("#abobo");
+			abobo.x(400);
+			abobo.css('opacity', 1);
+			
+			
+		}, 1000);
+	}
+
 
 
 
@@ -369,8 +380,7 @@ var PLAYGROUND_HEIGHT = 200;
 	$.playground().startGame(function(){
 		$("#welcomMessage").fadeOut(2000, function(){$(this).remove()});
 	});
-	
+
 	
 	
 //});
-

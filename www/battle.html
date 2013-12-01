@@ -3,52 +3,62 @@
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="./js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="./js/jquery.transit.min.js"></script>
 
-<script type="text/javascript" src="./js/jquery.fittext.js"></script>
 <script type="text/javascript" src="./js/player.js"></script>
+<script type="text/javascript" src="./js/enemy.js"></script>
 
 <script type="text/javascript" src="./js/jquery.gamequery.js"></script>
+<!--
 <script type="text/javascript" src="./js/superjavascriptfighter2.js"></script>
+-->
+
 
 <script type="text/javascript" src="./js/battle.js"></script>
 <script type="text/javascript">
     $(document).ready(function(e) {
 
 		player.initialize();
+		
+		enemy.initialize();
 
         battle.initialize();
+		
+		// 動態載入
+		$.getScript('js/superjavascriptfighter2.js');
     });
 </script>
 
 <div style="width:100%; height:100%; position:absolute; overflow:hidden; top:0; background:#000;">
 
     <div id="playground" style="position:absolute; top:10%; width:100%; height:200px;"></div>
-
-
+	
+    <div id="text_area" style="position:absolute; top:10%; width:100%; height:200px;"></div>
+     
 	<!-- 武器列表底圖 -->
    	<ul style="position:absolute; top:68%; left:0%; width:100%; height:40%; list-style:none; margin:0; padding:0;">
 
         <!-- 武器1 -->
         <li id="weapon_1" class="weapon_li" title="1">
-        	<img src="./img/forging/weapon1.png" class="weapon"/>
+        	<img src="./img/forging/weapon1.png" class="weapon" alt="1"/>
             <div id="createNum1" class="round">0</div>
         </li>
 
         <!-- 武器2 -->
         <li id="weapon_2" class="weapon_li" title="2">
-        	<img src="./img/forging/weapon2.png" class="weapon"/>
+        	<img src="./img/forging/weapon2.png" class="weapon" alt="2"/>
             <div id="createNum2" class="round">0</div>
         </li>
 
         <!-- 武器3 -->
         <li id="weapon_3" class="weapon_li" title="3">
-        	<img src="./img/forging/weapon3.png" class="weapon"/>
+        	<img src="./img/forging/weapon3.png" class="weapon" alt="3"/>
             <div id="createNum3" class="round">0</div>
         </li>
 
         <!-- 武器4 -->
         <li id="weapon_4" class="weapon_li" title="4">
-        	<img src="./img/forging/weapon4.png" class="weapon"/>
+        	<img src="./img/forging/weapon4.png" class="weapon" alt="4"/>
             <div id="createNum4" class="round">0</div>
         </li>
     </ul>
