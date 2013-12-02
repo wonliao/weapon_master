@@ -8,6 +8,14 @@ var map = {
 
 		map.isMobile = (/android|webos|iphone|ipad|ipod|blackberry/i.test(navigator.userAgent.toLowerCase()));
 
+		// for test
+		if( typeof(window.localStorage) == 'undefined' ) {
+			player.weapon1 = 50;
+			player.weapon2 = 50;
+			player.weapon3 = 40;
+			player.weapon4 = 30;
+		}
+
 		// 拖曳地圖
 		$('#wrapper').kinetic();
 
@@ -41,15 +49,12 @@ var map = {
 			 	"好的", 
 				"不用了", 
 			 	function() {
-					console.log("success");
-					$('#donkey').show().transition({rotateY: '180deg'}, 0).transition({ x: '-220px' }, 20000, 'linear');
-					setTimeout(function() {
-						$('#donkey').hide();
-						myAlert("運送武器到達", "提示", "好的");
-					}, 20000);
+					console.log("ok");
+					// 進行運送
+					map.startTransport();
 				}, 
 				function() {
-					console.log("fail");
+					console.log("no");
 				}
 			);
 		});
@@ -58,19 +63,32 @@ var map = {
 	// 更新抬頭訊息
 	showHUD: function() {
 
-		if(map.isMobile == false) {
-			player.weapon1 = 10;
-			player.weapon2 = 20;
-			player.weapon3 = 30;
-			player.weapon4 = 40;
-		}
-		
 		// 武器數量
 		$('#hud_1').text(player.weapon1);
 		$('#hud_2').text(player.weapon2);
 		$('#hud_3').text(player.weapon3);
 		$('#hud_4').text(player.weapon4);
+	},
+
+	// 進行運送
+	startTransport: function() {
+
+		// 增加英雄武器
+		player.addHeroWeapon();
+		
+		// 更新抬頭訊息
+		map.showHUD();
+		
+		// 顯示運送驢子
+		$('#donkey').show().transition({rotateY: '180deg'}, 0).transition({ x: '-220px' }, 20000, 'linear');
+
+		// 設定到達時間
+		setTimeout(function() {
+			$('#donkey').hide();
+			myAlert("運送武器到達", "提示", "好的");
+		}, 20000);
 	}
+	
 }
 
 

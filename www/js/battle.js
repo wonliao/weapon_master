@@ -25,7 +25,6 @@ var battle = {
 			drop: function( event, ui ) {
 				
 				var weapon_type = $(ui.draggable).attr("alt")
-				console.log("weapon_type("+weapon_type+")");
 
 				// 進行攻擊
 				battle.attack(Math.floor(weapon_type));
@@ -36,16 +35,18 @@ var battle = {
 	// 進行攻擊
 	attack: function(weapon_type) {
 
-		// 戰鬥計算
-		battle.processBattle(weapon_type);	
-		
-		// 播放玩家攻擊動畫	
-		var cvs = $("#cvs");
-		var cvsF = cvs.data("fighter");
-		cvsF.currentState = KICK;
-		changeAnimation(cvs, cvsF.animations, 4, cvsF.currentState);
-				
-				//respawnEnemy();
+		// 武器-1
+		if(player.decWeapon(weapon_type) == true) {
+
+			// 戰鬥計算
+			battle.processBattle(weapon_type);	
+
+			// 播放玩家攻擊動畫	
+			var cvs = $("#cvs");
+			var cvsF = cvs.data("fighter");
+			cvsF.currentState = KICK;
+			changeAnimation(cvs, cvsF.animations, 4, cvsF.currentState);
+		}
 	},
 
 	// 戰鬥計算
@@ -153,10 +154,10 @@ var battle = {
 	showHUD: function() {
 
 		// 武器數量
-		$('#createNum1').text(player.weapon1);
-		$('#createNum2').text(player.weapon2);
-		$('#createNum3').text(player.weapon3);
-		$('#createNum4').text(player.weapon4);
+		$('#createNum1').text(player.hero_weapon1);
+		$('#createNum2').text(player.hero_weapon2);
+		$('#createNum3').text(player.hero_weapon3);
+		$('#createNum4').text(player.hero_weapon4);
 	}
 };
 

@@ -12,6 +12,11 @@ var player = {
 	weapon3: 0,	// 武器三
 	weapon4: 0,	// 武器四
 
+	hero_weapon1: 0,	// 英雄持有的武器一
+	hero_weapon2: 0,	// 英雄持有的武器二
+	hero_weapon3: 0,	// 英雄持有的武器三
+	hero_weapon4: 0,	// 英雄持有的武器四
+
 	// 初始化
     initialize: function() {
 
@@ -63,6 +68,22 @@ var player = {
 			var weapon4 = window.localStorage.getItem("WEAPON_4");
 			if(weapon4 == null)		window.localStorage.setItem("WEAPON_4", player.weapon4);
 			else					player.weapon4 = weapon4;
+			
+			var hero_weapon1 = window.localStorage.getItem("HERO_WEAPON_1");
+			if(hero_weapon1 == null)		window.localStorage.setItem("HERO_WEAPON_1", player.hero_weapon1);
+			else					player.hero_weapon1 = hero_weapon1;
+
+			var hero_weapon2 = window.localStorage.getItem("HERO_WEAPON_2");
+			if(hero_weapon2 == null)		window.localStorage.setItem("HERO_WEAPON_2", player.hero_weapon2);
+			else					player.hero_weapon2 = hero_weapon2;
+
+			var hero_weapon3 = window.localStorage.getItem("HERO_WEAPON_3");
+			if(hero_weapon3 == null)		window.localStorage.setItem("HERO_WEAPON_3", player.hero_weapon3);
+			else					player.hero_weapon3 = hero_weapon3;
+
+			var hero_weapon4 = window.localStorage.getItem("HERO_WEAPON_4");
+			if(hero_weapon4 == null)		window.localStorage.setItem("HERO_WEAPON_4", player.hero_weapon4);
+			else					player.hero_weapon4 = hero_weapon4;
 		}
 	},
 
@@ -82,6 +103,11 @@ var player = {
 			window.localStorage.setItem("WEAPON_2", player.weapon2);
 			window.localStorage.setItem("WEAPON_3", player.weapon3);
 			window.localStorage.setItem("WEAPON_4", player.weapon4);
+			
+			window.localStorage.setItem("HERO_WEAPON_1", player.hero_weapon1);
+			window.localStorage.setItem("HERO_WEAPON_2", player.hero_weapon2);
+			window.localStorage.setItem("HERO_WEAPON_3", player.hero_weapon3);
+			window.localStorage.setItem("HERO_WEAPON_4", player.hero_weapon4);
 		}
 	},
 
@@ -118,12 +144,52 @@ var player = {
 	// 武器+1
 	addWeapon: function(weaponType) {
 
+		weaponType = Math.floor(weaponType);
+
 		switch(weaponType){
-		case "1":	player.weapon1++; 	break;
-		case "2":	player.weapon2++;	break;
-		case "3":	player.weapon3++; 	break;
-		case "4":	player.weapon4++; 	break;
+		case 1:	player.weapon1++; 	break;
+		case 2:	player.weapon2++;	break;
+		case 3:	player.weapon3++; 	break;
+		case 4:	player.weapon4++; 	break;
 		}
+
+		// 儲存資料
+		player.saveData();
+	},
+	
+	// 武器-1
+	decWeapon: function(weaponType) {
+		
+		weaponType = Math.floor(weaponType);
+
+		var success_flag = false;
+		switch(weaponType){
+		case 1:	if(player.weapon1 > 0) {	player.weapon1--;	success_flag = true;	}	break;
+		case 2:	if(player.weapon2 > 0) {	player.weapon2--;	success_flag = true;	}	break;
+		case 3:	if(player.weapon3 > 0) {	player.weapon3--;	success_flag = true;	}	break;
+		case 4:	if(player.weapon4 > 0) {	player.weapon4--;	success_flag = true;	}	break;
+		}
+
+		// 儲存資料
+		if(success_flag == true)	player.saveData();
+
+		return success_flag;
+	},
+	
+	// 增加英雄武器
+	addHeroWeapon: function() {
+
+		// 增加英雄武器
+		player.hero_weapon1 = Math.floor(player.hero_weapon1) + Math.floor(player.weapon1);
+		player.hero_weapon2 = Math.floor(player.hero_weapon2) + Math.floor(player.weapon2);
+		player.hero_weapon3 = Math.floor(player.hero_weapon3) + Math.floor(player.weapon3);
+		player.hero_weapon4 = Math.floor(player.hero_weapon4) + Math.floor(player.weapon4);
+
+		// 扣除武器
+		player.weapon1 = 0;
+		player.weapon2 = 0;
+		player.weapon3 = 0;
+		player.weapon4 = 0;
 
 		// 儲存資料
 		player.saveData();
